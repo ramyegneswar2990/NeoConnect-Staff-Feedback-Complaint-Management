@@ -49,11 +49,40 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        white: "#020402", // Deep terminal black
+        black: "#00ff00", // Neon green
+        blue: { // Map all UI blue to terminal neon green
+          50: "#001f00",
+          100: "#002b00",
+          200: "#004000",
+          300: "#005a00",
+          400: "#008000",
+          500: "#00aa00",
+          600: "#00ff00", // Primary action color
+          700: "#33ff33",
+          800: "#66ff66",
+          900: "#99ff99",
+        },
+        gray: { // Invert grays for dark mode
+          50: "#050a05",  // old light background
+          100: "#0a140a", // slightly lighter
+          200: "#142914",
+          300: "#1f3d1f",
+          400: "#336633",
+          500: "#5c8a5c",
+          600: "#85ad85", // text-gray-600
+          700: "#b3d1b3",
+          800: "#00ff00", // old dark text becomes neon green text
+          900: "#ccffcc",
+        },
+      },
+      fontFamily: {
+        sans: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0px", // Sharp corners for hacker theme
+        md: "0px",
+        sm: "0px",
       },
     },
   },
