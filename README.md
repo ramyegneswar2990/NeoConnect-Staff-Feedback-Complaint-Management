@@ -87,6 +87,9 @@ Security and strict data silos are critical to HR applications. NeoConnect opera
 #### 👥 Staff Interface  
 ![Staff Interface](Images/Staff/Screenshot%202026-03-14%20111618.png)
 
+### Submitting a Case
+![Submit Case Form](Images/Staff/Screenshot%202026-03-14%20111626.png)
+
 **Features:**
 - Submit new cases and complaints
 - Track personal case history
@@ -271,8 +274,7 @@ npm run dev
 
 ## 📱 Usage Guide
 
-### Submitting a Case
-![Submit Case Form](Images/Staff/Screenshot%202026-03-14%20111626.png)
+
 
 1. **Login with your credentials** - Access the system with your email and password
 2. **Navigate to Dashboard** - Click on "Dashboard" from the sidebar
