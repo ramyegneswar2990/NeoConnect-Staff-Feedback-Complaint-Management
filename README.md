@@ -272,11 +272,28 @@ npm run dev
 ## 📱 Usage Guide
 
 ### Submitting a Case
-1. Login with your credentials
-2. Click "Submit New Case"
-3. Fill in case details (title, description, category, etc.)
-4. Add attachments if needed
-5. Submit for review
+![Submit Case Form](Images/Staff/Screenshot%202026-03-14%20111626.png)
+
+1. **Login with your credentials** - Access the system with your email and password
+2. **Navigate to Dashboard** - Click on "Dashboard" from the sidebar
+3. **Click "Submit New Case"** - Located at the top right of your dashboard
+4. **Fill in Case Details**:
+   - **Title**: Brief summary of the issue
+   - **Description**: Detailed explanation of the problem
+   - **Category**: Select from Safety, Policy, Facilities, HR, or Other
+   - **Department**: Choose the relevant department
+   - **Location**: Specify where the issue occurred
+   - **Severity**: Choose Low, Medium, or High priority
+   - **Anonymous**: Toggle if you want to submit anonymously
+5. **Add Attachments** - Upload any relevant documents or images
+6. **Submit for Review** - Click the submit button to send to Secretariat
+
+**Form Features:**
+- **Real-time Validation**: Instant feedback on required fields
+- **Category Guidance**: Descriptions help choose the right category
+- **Anonymous Option**: Safe submission without fear of retaliation
+- **File Upload**: Support for multiple attachment types
+- **Clear Visibility**: High contrast text for easy reading
 
 ### Tracking Cases
 - **Staff**: View personal case history in dashboard
