@@ -83,7 +83,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <h2 className="text-lg font-semibold text-foreground">
             {navItems.find(n => n.href === pathname)?.name || 'Dashboard'}
           </h2>
-          <div className="text-sm text-temple-300">
+          <div className="text-sm text-muted-foreground">
             {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </div>
         </header>

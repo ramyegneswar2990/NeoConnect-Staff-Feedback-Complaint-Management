@@ -20,6 +20,7 @@ app.use('/api/cases', require('./routes/cases'));
 app.use('/api/polls', require('./routes/polls'));
 app.use('/api/dashboard', require('./routes/dashboard'));
 app.use('/api/public', require('./routes/public'));
+app.use('/api/admin', require('./routes/admin'));
 
 // 7-Day Rule Logic
 // In a real app, this would be a Cron Job (node-cron)
