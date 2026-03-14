@@ -36,11 +36,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const filteredNav = navItems.filter(item => user && item.roles.includes(user.role));
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen">
       {/* Sidebar */}
-      <div className="w-64 bg-white border-r flex flex-col">
-        <div className="p-6 border-b">
-          <h1 className="text-xl font-bold text-blue-600">NeoConnect</h1>
+      <div className="w-64 temple-card border-r border-border flex flex-col temple-glow">
+        <div className="p-6 border-b border-border">
+          <h1 className="text-xl font-bold text-forest-300">NeoConnect</h1>
         </div>
         <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
           {filteredNav.map((item) => (
@@ -49,7 +49,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               href={item.href}
               className={cn(
                 "flex items-center space-x-3 p-3 rounded-lg transition-colors",
-                pathname === item.href ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-50 hover:text-blue-600"
+                pathname === item.href ? "bg-night-500/30 text-white border border-night-400/50" : "text-temple-200 hover:bg-temple-700/50 hover:text-white"
               )}
             >
               <item.icon size={20} />
@@ -57,19 +57,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </Link>
           ))}
         </nav>
-        <div className="p-4 border-t">
-          <div className="flex items-center space-x-3 mb-4 p-3 bg-gray-50 rounded-lg">
-            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+        <div className="p-4 border-t border-border">
+          <div className="flex items-center space-x-3 mb-4 p-3 temple-card rounded-lg temple-glow">
+            <div className="w-8 h-8 rounded-full bg-night-500/30 flex items-center justify-center text-white font-bold border border-night-400/50">
               {user?.name[0]}
             </div>
             <div className="flex-1 overflow-hidden">
-              <p className="text-sm font-medium truncate">{user?.name}</p>
-              <p className="text-xs text-gray-500 capitalize">{user?.role}</p>
+              <p className="text-sm font-medium truncate text-foreground">{user?.name}</p>
+              <p className="text-xs text-temple-300 capitalize">{user?.role}</p>
             </div>
           </div>
           <button
             onClick={logout}
-            className="flex items-center space-x-3 w-full p-3 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+            className="flex items-center space-x-3 w-full p-3 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
           >
             <LogOut size={20} />
             <span className="font-medium">Logout</span>
@@ -79,11 +79,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="bg-white border-b p-4 flex justify-between items-center h-16">
-          <h2 className="text-lg font-semibold text-gray-800">
+        <header className="temple-card border-b border-border p-4 flex justify-between items-center h-16 temple-glow">
+          <h2 className="text-lg font-semibold text-foreground">
             {navItems.find(n => n.href === pathname)?.name || 'Dashboard'}
           </h2>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-temple-300">
             {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </div>
         </header>

@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
-    --foreground: 120 100% 50%;
-    --card: 0 0% 5%;
-    --card-foreground: 120 100% 50%;
-    --popover: 0 0% 5%;
-    --popover-foreground: 120 100% 50%;
-    --primary: 120 100% 40%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 120 100% 10%;
-    --secondary-foreground: 120 100% 50%;
-    --muted: 120 100% 10%;
-    --muted-foreground: 120 100% 30%;
-    --accent: 120 100% 15%;
-    --accent-foreground: 120 100% 50%;
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 0%;
-    --border: 120 100% 20%;
-    --input: 120 100% 20%;
-    --ring: 120 100% 50%;
-    --radius: 0rem;
+    --background: 220 20% 8%; /* Dark blue-green background */
+    --foreground: 0 0% 0%; /* Pure black text */
+    --card: 220 20% 12%; /* Slightly lighter card background */
+    --card-foreground: 210 50% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 0%; /* Pure black text */
+    --primary: 150 60% 40%; /* Deep green for primary actions */
+    --primary-foreground: 0 0% 0%; /* Pure black text for primary elements */
+    --secondary: 200 30% 20%; /* Muted blue for secondary elements */
+    --secondary-foreground: 0 0% 0%; /* Pure black text */
+    --muted: 220 20% 15%;
+    --muted-foreground: 0 0% 0%; /* Pure black text */
+    --accent: 200 30% 25%;
+    --accent-foreground: 0 0% 0%; /* Pure black text */
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 0%; /* Pure black text */
+    --border: 220 20% 25%;
+    --input: 220 20% 18%;
+    --ring: 150 60% 40%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 2%;
-    --foreground: 120 100% 50%;
-    --card: 0 0% 5%;
-    --card-foreground: 120 100% 50%;
-    --popover: 0 0% 5%;
-    --popover-foreground: 120 100% 50%;
-    --primary: 120 100% 40%;
+    --background: 220 20% 8%;
+    --foreground: 0 0% 0%;
+    --card: 220 20% 12%;
+    --card-foreground: 210 50% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 50% 95%;
+    --primary: 150 60% 40%;
     --primary-foreground: 0 0% 0%;
-    --secondary: 120 100% 10%;
-    --secondary-foreground: 120 100% 50%;
-    --muted: 120 100% 10%;
-    --muted-foreground: 120 100% 30%;
-    --accent: 120 100% 15%;
-    --accent-foreground: 120 100% 50%;
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 0%;
-    --border: 120 100% 20%;
-    --input: 120 100% 20%;
-    --ring: 120 100% 50%;
+    --secondary: 200 30% 20%;
+    --secondary-foreground: 210 50% 95%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 0 0% 0%;
+    --accent: 200 30% 25%;
+    --accent-foreground: 210 50% 95%;
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 25%;
+    --input: 220 20% 18%;
+    --ring: 150 60% 40%;
   }
 }
 
@@ -55,5 +55,31 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .temple-night-bg {
+    background: linear-gradient(135deg, 
+      hsl(199, 90%, 53%) 0%, 
+      hsl(199, 90%, 53%) 25%, 
+      hsl(199, 90%, 53%) 50%, 
+      hsl(199, 90%, 53%) 75%, 
+      hsl(199, 90%, 53%) 100%
+    );
+  }
+  
+  .temple-card {
+    background: linear-gradient(135deg, 
+      hsla(220, 67%, 47%, 0.95) 0%, 
+      hsla(219, 80%, 43%, 0.9) 100%
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(220, 20%, 35%, 0.5);
+  }
+  
+  .temple-glow {
+    box-shadow: 0 0 20px hsla(30, 80%, 60%, 0.1),
+                0 0 40px hsla(30, 80%, 60%, 0.05);
   }
 }
