@@ -1,6 +1,6 @@
 # NeoConnect – Staff Feedback & Complaint Management Platform
 
-![Main Interface](Images/Screenshot%202026-03-14%20103210.png)
+![Main Interface](Images/Staff/Screenshot%202026-03-16%20015334.png)
 
 An enterprise-grade, full-stack application designed to streamline internal company feedback, enhance policy transparency, and actively track and resolve staff-submitted cases.
 
@@ -70,7 +70,11 @@ Security and strict data silos are critical to HR applications. NeoConnect opera
 ### User Interfaces & Screenshots
 
 #### 👤 Admin Interface
-![Admin Interface](Images/admin/Screenshot%202026-03-14%20110939.png)
+![Admin Interface Dashboard](Images/admin/Screenshot%202026-03-16%20014338.png)
+*Admin Dashboard Overview*
+
+![Admin User Management](Images/admin/Screenshot%202026-03-16%20014459.png)
+*Admin User Management & Settings*
 
 **Features:**
 - Complete user management with CRUD operations
@@ -85,10 +89,18 @@ Security and strict data silos are critical to HR applications. NeoConnect opera
 ---
 
 #### 👥 Staff Interface  
-![Staff Interface](Images/Staff/Screenshot%202026-03-14%20111618.png)
+![Staff Dashboard](Images/Staff/Screenshot%202026-03-16%20015334.png)
+*Staff Main Dashboard*
+
+![Staff Case Tracking](Images/Staff/Screenshot%202026-03-16%20015342.png)
+*Staff Case History & Tracking*
+
+![Staff Notifications](Images/Staff/Screenshot%202026-03-16%20015349.png)
+*Staff Notifications & Updates*
 
 ### Submitting a Case
-![Submit Case Form](Images/Staff/Screenshot%202026-03-14%20111626.png)
+![Submit Case Form](Images/Staff/Screenshot%202026-03-16%20015355.png)
+*Frictionless Case Submission Form*
 
 **Features:**
 - Submit new cases and complaints
@@ -103,7 +115,20 @@ Security and strict data silos are critical to HR applications. NeoConnect opera
 ---
 
 #### 📋 Secretariat Interface
-![Secretariat Interface](Images/Secretariat/Screenshot%202026-03-14%20111632.png)
+![Secretariat Dashboard](Images/Secretariat/Screenshot%202026-03-16%20014629.png)
+*Secretariat Overview Dashboard*
+
+![Secretariat Analytics](Images/Secretariat/Screenshot%202026-03-16%20014637.png)
+*Deep-dive Analytics & Insights*
+
+![Secretariat Inbox](Images/Secretariat/Screenshot%202026-03-16%20014646.png)
+*Secretariat Routing Inbox*
+
+![Secretariat Review 1](Images/Secretariat/Screenshot%202026-03-16%20014655.png)
+*Case Review & Details View*
+
+![Secretariat Review 2](Images/Secretariat/Screenshot%202026-03-16%20014704.png)
+*Assigning and Escalating Cases*
 
 **Features:**
 - Review and triage incoming cases
@@ -118,7 +143,14 @@ Security and strict data silos are critical to HR applications. NeoConnect opera
 ---
 
 #### 🛠️ Case Manager Interface
-![Case Manager Interface](Images/Case%20manager/Screenshot%202026-03-14%20103823.png)
+![Case Manager Inbox](Images/Case%20manager/Screenshot%202026-03-16%20014948.png)
+*Case Manager Assigned Tickets*
+
+![Case Manager Update 1](Images/Case%20manager/Screenshot%202026-03-16%20015002.png)
+*Updating Case Status & Resolving Issues*
+
+![Case Manager Update 2](Images/Case%20manager/Screenshot%202026-03-16%20015020.png)
+*Adding Internal Notes and Communications*
 
 **Features:**
 - Manage assigned cases
@@ -137,11 +169,11 @@ Security and strict data silos are critical to HR applications. NeoConnect opera
 The application features a sophisticated **temple night theme** designed for maximum readability:
 
 ### Theme Features
-- **Dark Background**: Deep blue-green gradient background with atmospheric effects
-- **High Contrast Text**: Pure black text for maximum visibility against dark backgrounds
-- **Atmospheric Effects**: Gradient cards with glow effects for depth
-- **Consistent Styling**: Cohesive design across all pages and roles
-- **Responsive Design**: Mobile-friendly interface that works on all devices
+- **Glassmorphic Presentation**: Frost glass transparency allows background imagery to vibrantly shine through UI elements
+- **Scenic Background**: Breathtaking scenic background applied to the `<body>` element on all pages
+- **Clear Readability**: Dark translucent overlays with stark white text for ultimate contrast
+- **Atmospheric Effects**: Soft frosted borders and translucent shadows that create realistic depth
+- **Unified Aesthetic**: Consistent premium glassmorphism applied perfectly to Sidebars, Modals, Forms and Header navigations
 
 ### Login Page
 ![Login Page](Images/Screenshot%202026-03-14%20112839.png)
