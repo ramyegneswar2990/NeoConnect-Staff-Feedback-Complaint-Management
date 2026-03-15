@@ -1,6 +1,6 @@
 # NeoConnect – Staff Feedback & Complaint Management Platform
 
-![Main Interface](Images/Staff/Screenshot%202026-03-16%20015334.png)
+![Main Interface](Images/admin/Screenshot%202026-03-16%20014338.png)
 
 An enterprise-grade, full-stack application designed to streamline internal company feedback, enhance policy transparency, and actively track and resolve staff-submitted cases.
 
@@ -70,7 +70,8 @@ Security and strict data silos are critical to HR applications. NeoConnect opera
 ### User Interfaces & Screenshots
 
 #### 👤 Admin Interface
-![Admin Interface Dashboard](Images/admin/Screenshot%202026-03-16%20014338.png)
+Images/Staff/Screenshot%202026-03-16%20015334.png
+![Admin Interface Dashboard]()
 *Admin Dashboard Overview*
 
 ![Admin User Management](Images/admin/Screenshot%202026-03-16%20014459.png)
