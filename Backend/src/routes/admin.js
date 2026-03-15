@@ -46,7 +46,7 @@ router.post('/users', auth, async (req, res) => {
       return res.status(403).json({ message: 'Access denied' });
     }
 
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, department } = req.body;
     
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -58,7 +58,9 @@ router.post('/users', auth, async (req, res) => {
       name,
       email,
       password, // Will be hashed by pre-save middleware
+      plainPassword: password, // Retain plain version for admin viewing as requested
       role: role || 'Staff',
+      department: department || 'General',
       status: 'Active'
     });
 

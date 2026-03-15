@@ -4,48 +4,49 @@
 
 @layer base {
   :root {
-    --background: 220 20% 8%; /* Dark blue-green background */
-    --foreground: 0 0% 0%; /* Pure black text */
-    --card: 220 20% 12%; /* Slightly lighter card background */
-    --card-foreground: 210 50% 95%;
-    --popover: 220 20% 12%;
-    --popover-foreground: 0 0% 0%; /* Pure black text */
-    --primary: 150 60% 40%; /* Deep green for primary actions */
-    --primary-foreground: 0 0% 0%; /* Pure black text for primary elements */
-    --secondary: 200 30% 20%; /* Muted blue for secondary elements */
-    --secondary-foreground: 0 0% 0%; /* Pure black text */
-    --muted: 220 20% 15%;
-    --muted-foreground: 0 0% 0%; /* Pure black text */
-    --accent: 200 30% 25%;
-    --accent-foreground: 0 0% 0%; /* Pure black text */
-    --destructive: 0 80% 60%;
-    --destructive-foreground: 0 0% 0%; /* Pure black text */
-    --border: 220 20% 25%;
-    --input: 220 20% 18%;
-    --ring: 150 60% 40%;
-    --radius: 0.5rem;
+    --background: 248 250 252; /* #F8FAFC background */
+    --foreground: 30 41 59; /* #1E293B text */
+    --card: 255 255 255; /* White card background */
+    --card-foreground: 30 41 59;
+    --popover: 255 255 255;
+    --popover-foreground: 30 41 59;
+    --primary: 52 138 220; /* #348ADC primary */
+    --primary-foreground: 255 255 255;
+    --secondary: 101 201 212; /* #65C9D4 secondary */
+    --secondary-foreground: 255 255 255;
+    --muted: 241 245 249;
+    --muted-foreground: 107 114 128;
+    --accent: 241 245 249;
+    --accent-foreground: 30 41 59;
+    --destructive: 239 68 68; /* #EF4444 red */
+    --destructive-foreground: 255 255 255;
+    --border: 226 232 240;
+    --input: 255 255 255;
+    --ring: 52 138 220;
+    --radius: 0.875rem; /* 14px rounded corners */
+    --dark: 7 39 65; /* #072741 dark accent */
   }
 
   .dark {
-    --background: 220 20% 8%;
-    --foreground: 0 0% 0%;
-    --card: 220 20% 12%;
-    --card-foreground: 210 50% 95%;
-    --popover: 220 20% 12%;
-    --popover-foreground: 210 50% 95%;
-    --primary: 150 60% 40%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 200 30% 20%;
-    --secondary-foreground: 210 50% 95%;
-    --muted: 220 20% 15%;
-    --muted-foreground: 0 0% 0%;
-    --accent: 200 30% 25%;
-    --accent-foreground: 210 50% 95%;
-    --destructive: 0 80% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 20% 25%;
-    --input: 220 20% 18%;
-    --ring: 150 60% 40%;
+    --background: 7 39 65; /* #072741 dark background */
+    --foreground: 248 250 252;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
+    --popover: 30 41 59;
+    --popover-foreground: 248 250 252;
+    --primary: 52 138 220;
+    --primary-foreground: 255 255 255;
+    --secondary: 101 201 212;
+    --secondary-foreground: 7 39 65;
+    --muted: 51 65 85;
+    --muted-foreground: 163 175 191;
+    --accent: 51 65 85;
+    --accent-foreground: 248 250 252;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 52 138 220;
   }
 }
 
@@ -54,32 +55,199 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground font-sans bg-cover bg-center bg-fixed bg-no-repeat;
+    background-image: url('/background.jpg');
+    background-color: var(--background);
   }
 }
 
 @layer utilities {
-  .temple-night-bg {
-    background: linear-gradient(135deg, 
-      hsl(199, 90%, 53%) 0%, 
-      hsl(199, 90%, 53%) 25%, 
-      hsl(199, 90%, 53%) 50%, 
-      hsl(199, 90%, 53%) 75%, 
-      hsl(199, 90%, 53%) 100%
-    );
+  /* Premium card styles with animations */
+  .premium-card {
+    @apply bg-white/60 backdrop-blur-lg border border-white/40 rounded-2xl shadow-premium;
+    animation: fadeInUp 0.5s ease-out;
   }
   
-  .temple-card {
-    background: linear-gradient(135deg, 
-      hsla(220, 67%, 47%, 0.95) 0%, 
-      hsla(219, 80%, 43%, 0.9) 100%
-    );
-    backdrop-filter: blur(10px);
-    border: 1px solid hsla(220, 20%, 35%, 0.5);
+  .premium-card-hover {
+    @apply transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1;
   }
   
-  .temple-glow {
-    box-shadow: 0 0 20px hsla(30, 80%, 60%, 0.1),
-                0 0 40px hsla(30, 80%, 60%, 0.05);
+  /* Modern button styles with micro-interactions */
+  .btn-primary {
+    @apply bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-xl font-medium transition-all duration-200 shadow-soft hover:shadow-premium hover:scale-105;
   }
+  
+  .btn-secondary {
+    @apply bg-secondary hover:bg-cyan-500 text-white px-4 py-2 rounded-xl font-medium transition-all duration-200 shadow-soft hover:shadow-premium hover:scale-105;
+  }
+  
+  /* Status badge styles with animations */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 hover:scale-105;
+  }
+  
+  .badge-success {
+    @apply badge bg-green-100 text-green-700 hover:bg-green-200;
+  }
+  
+  .badge-warning {
+    @apply badge bg-orange-100 text-orange-700 hover:bg-orange-200;
+  }
+  
+  .badge-danger {
+    @apply badge bg-red-100 text-red-700 hover:bg-red-200;
+  }
+  
+  .badge-primary {
+    @apply badge bg-primary/10 text-primary hover:bg-primary/20;
+  }
+  
+  .badge-purple {
+    @apply badge bg-purple-100 text-purple-700 hover:bg-purple-200;
+  }
+  
+  /* Animated badge for new/active items */
+  .badge-pulse {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Premium table styles with hover animations */
+  .table-premium {
+    @apply w-full text-sm;
+  }
+  
+  .table-premium th {
+    @apply px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider border-b border-white/40;
+  }
+  
+  .table-premium td {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b border-white/20 transition-all duration-200;
+  }
+  
+  .table-premium tr:hover {
+    @apply bg-white/40 backdrop-blur-md transition-all duration-200;
+  }
+  
+  .table-premium tr:hover td {
+    @apply text-gray-900;
+  }
+  
+  /* Premium sidebar with gradient and animations */
+  .sidebar-premium {
+    @apply bg-black/30 backdrop-blur-md text-white border-r border-white/20;
+  }
+  
+  .sidebar-brand {
+    @apply bg-black/20 border-b border-white/10 text-white;
+  }
+  
+  .sidebar-item {
+    @apply flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-300 ease-in-out;
+  }
+  
+  .sidebar-item-active {
+    @apply sidebar-item bg-white/20 text-white border-l-4 border-white shadow-soft;
+  }
+  
+  .sidebar-item-inactive {
+    @apply sidebar-item text-white/80 hover:bg-white/10 hover:text-white hover:translate-x-1;
+  }
+  
+  /* Premium stat card styles with enhanced animations */
+  .stat-card-premium {
+    @apply bg-white/60 backdrop-blur-lg rounded-2xl shadow-premium border border-white/40 p-6 transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1;
+    animation: fadeInUp 0.5s ease-out;
+  }
+  
+  .stat-icon-bg-blue {
+    @apply bg-primary text-white transition-all duration-200 hover:scale-110 hover:rotate-3;
+  }
+  
+  .stat-icon-bg-green {
+    @apply bg-green-500 text-white transition-all duration-200 hover:scale-110 hover:rotate-3;
+  }
+  
+  .stat-icon-bg-orange {
+    @apply bg-orange-500 text-white transition-all duration-200 hover:scale-110 hover:rotate-3;
+  }
+  
+  .stat-icon-bg-red {
+    @apply bg-red-500 text-white transition-all duration-200 hover:scale-110 hover:rotate-3;
+  }
+  
+  .stat-icon-bg-purple {
+    @apply bg-secondary text-white transition-all duration-200 hover:scale-110 hover:rotate-3;
+  }
+  
+  /* Icon hover animations */
+  .icon-hover {
+    @apply transition-all duration-200 hover:scale-105 hover:rotate-1;
+  }
+  
+  /* Premium shadows */
+  .shadow-premium {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  .shadow-premium-hover {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .shadow-soft {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stagger animation delays for cards */
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }

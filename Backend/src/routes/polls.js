@@ -51,7 +51,7 @@ router.post('/:id/vote', auth, async (req, res) => {
 
     // Update poll count
     await Poll.updateOne(
-      { _id: pollId, "options._index": optionIndex }, // This is wrong in mongoose, need different approach
+      { _id: pollId }, 
       { $inc: { [`options.${optionIndex}.votes`]: 1 } }
     );
 

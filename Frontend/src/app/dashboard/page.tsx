@@ -38,20 +38,20 @@ export default function DashboardPage() {
   return (
     <DashboardLayout>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <StatCard title="Total Cases" count={stats.total} icon={Activity} color="bg-night-500" />
-        <StatCard title="Resolved" count={stats.resolved} icon={CheckCircle} color="bg-forest-500" />
-        <StatCard title="In Progress" count={stats.pending} icon={Clock} color="bg-warm-500" />
-        <StatCard title="Escalated" count={stats.escalated} icon={AlertTriangle} color="bg-red-500" />
+        <StatCard title="Total Cases" count={stats.total} icon={Activity} color="stat-icon-bg-blue" delay="animate-delay-100" />
+        <StatCard title="Resolved" count={stats.resolved} icon={CheckCircle} color="stat-icon-bg-green" delay="animate-delay-200" />
+        <StatCard title="In Progress" count={stats.pending} icon={Clock} color="stat-icon-bg-orange" delay="animate-delay-300" />
+        <StatCard title="Escalated" count={stats.escalated} icon={AlertTriangle} color="stat-icon-bg-red" delay="animate-delay-400" />
       </div>
 
-      <div className="temple-card rounded-xl shadow-sm border overflow-hidden temple-glow">
-        <div className="p-6 border-b border-border flex justify-between items-center">
-          <h3 className="text-lg font-bold text-foreground">Recent Cases</h3>
-          <Link href="/cases" className="text-night-300 text-sm font-medium hover:text-white transition-colors">View All</Link>
+      <div className="premium-card premium-card-hover animate-delay-500">
+        <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+          <h3 className="text-xl font-bold text-gray-900">Recent Cases</h3>
+          <Link href="/cases" className="text-blue-600 text-sm font-medium hover:text-blue-700 transition-all duration-200 hover:scale-105">View All</Link>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-left">
-            <thead className="bg-temple-800/50 text-temple-300 text-xs uppercase font-medium">
+          <table className="table-premium">
+            <thead>
               <tr>
                 <th className="px-6 py-4">Tracking ID</th>
                 <th className="px-6 py-4">Category</th>
@@ -60,27 +60,27 @@ export default function DashboardPage() {
                 <th className="px-6 py-4">Created</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
-              {recentCases.map((c: any) => (
-                <tr key={c._id} className="hover:bg-temple-800/30 transition-colors">
-                  <td className="px-6 py-4 font-mono font-bold text-sm text-night-300">
-                    <Link href={`/cases/${c._id}`} className="hover:text-white transition-colors">{c.trackingId}</Link>
+            <tbody>
+              {recentCases.map((c: any, index: number) => (
+                <tr key={c._id} style={{ animationDelay: `${600 + index * 50}ms` }} className="animate-fadeInUp">
+                  <td className="px-6 py-4 font-mono font-bold text-sm text-blue-600">
+                    <Link href={`/cases/${c._id}`} className="hover:text-blue-700 transition-all duration-200 hover:scale-105 inline-block">{c.trackingId}</Link>
                   </td>
-                  <td className="px-6 py-4 text-sm text-foreground">{c.category}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900">{c.category}</td>
                   <td className="px-6 py-4">
-                    <span className={cnStatus(c.status)}>
+                    <span className={`${cnStatus(c.status)} ${c.status === 'New' || c.status === 'In Progress' ? 'badge-pulse' : ''}`}>
                       {c.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm capitalize text-foreground">{c.severity}</td>
-                  <td className="px-6 py-4 text-sm text-muted-foreground">
+                  <td className="px-6 py-4 text-sm capitalize text-gray-900">{c.severity}</td>
+                  <td className="px-6 py-4 text-sm text-gray-500">
                     {new Date(c.createdAt).toLocaleDateString()}
                   </td>
                 </tr>
               ))}
               {recentCases.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-6 py-10 text-center text-muted-foreground">
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
                     No cases found.
                   </td>
                 </tr>
@@ -93,28 +93,30 @@ export default function DashboardPage() {
   );
 }
 
-function StatCard({ title, count, icon: Icon, color }: any) {
+function StatCard({ title, count, icon: Icon, color, delay }: any) {
   return (
-    <div className="temple-card p-6 rounded-xl shadow-sm border flex items-center space-x-4 temple-glow">
-      <div className={`${color} p-3 rounded-lg text-white`}>
-        <Icon size={24} />
-      </div>
-      <div>
-        <p className="text-sm text-muted-foreground font-medium">{title}</p>
-        <p className="text-2xl font-bold text-foreground">{count}</p>
+    <div className={`stat-card-premium ${delay}`}>
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm font-medium text-gray-600 mb-2">{title}</p>
+          <p className="text-3xl font-bold text-gray-900">{count}</p>
+        </div>
+        <div className={`${color} p-4 rounded-2xl shadow-soft icon-hover`}>
+          <Icon size={28} />
+        </div>
       </div>
     </div>
   );
 }
 
 function cnStatus(status: string) {
-  const base = "px-2.5 py-0.5 rounded-full text-xs font-medium";
   switch (status) {
-    case 'New': return `${base} bg-night-500/30 text-white border border-night-400/50`;
-    case 'Assigned': return `${base} bg-purple-500/30 text-white border border-purple-400/50`;
-    case 'In Progress': return `${base} bg-warm-500/30 text-white border border-warm-400/50`;
-    case 'Resolved': return `${base} bg-forest-500/30 text-white border border-forest-400/50`;
-    case 'Escalated': return `${base} bg-red-500/30 text-white border border-red-400/50`;
-    default: return `${base} bg-temple-600/30 text-temple-200 border border-temple-500/50`;
+    case 'New': return "badge-primary";
+    case 'Assigned': return "badge-purple";
+    case 'In Progress': return "badge-warning";
+    case 'Resolved': return "badge-success";
+    case 'Escalated': return "badge-danger";
+    case 'Pending': return "badge-warning";
+    default: return "badge-primary";
   }
 }

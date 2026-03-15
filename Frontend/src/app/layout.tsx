@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} temple-night-bg`}>
+      <body className={`${inter.className} bg-background`}>
         <AuthProvider>
           {children}
         </AuthProvider>

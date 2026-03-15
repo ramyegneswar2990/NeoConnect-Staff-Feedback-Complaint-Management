@@ -70,8 +70,8 @@ export default function PublicHubPage() {
     <DashboardLayout>
       <div className="flex justify-between items-center mb-10">
         <div>
-          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Public Transparency Hub</h1>
-          <p className="text-gray-500 mt-1">Real-time accountability and quarterly outcomes.</p>
+          <h1 className="text-3xl font-extrabold text-white tracking-tight">Quarterly Digest & Public Hub</h1>
+          <p className="text-white/80 mt-1">Real-time accountability and quarterly outcomes.</p>
         </div>
         {canManage && (
           <button 
@@ -85,7 +85,7 @@ export default function PublicHubPage() {
 
       {!isMgmt && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-blue-600/80 to-indigo-700/80 backdrop-blur-md p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group border border-white/20">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
               <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l5-5z" clipRule="evenodd"></path></svg>
             </div>
@@ -93,15 +93,15 @@ export default function PublicHubPage() {
             <h4 className="text-4xl font-extrabold mb-1">{impact.length}</h4>
             <p className="text-sm text-blue-100 font-medium">Issues Resolved to Date</p>
           </div>
-          <div className="bg-white p-8 rounded-3xl border shadow-sm flex flex-col justify-center">
-            <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-2">Latest Update</p>
+          <div className="bg-white/60 backdrop-blur-md p-8 rounded-3xl border border-white/40 shadow-premium flex flex-col justify-center">
+            <p className="text-gray-600 font-bold uppercase tracking-widest text-[10px] mb-2">Latest Update</p>
             <h4 className="text-xl font-bold text-gray-900 line-clamp-1">{(digest[0] as any)?.title || 'Awaiting Digest'}</h4>
-            <p className="text-sm text-gray-500 mt-1">{digest[0] ? new Date((digest[0] as any).publishedAt).toLocaleDateString() : 'Stay tuned'}</p>
+            <p className="text-sm text-gray-700 mt-1">{digest[0] ? new Date((digest[0] as any).publishedAt).toLocaleDateString() : 'Stay tuned'}</p>
           </div>
-          <div className="bg-white p-8 rounded-3xl border shadow-sm flex flex-col justify-center">
-            <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-2">Meeting Minutes</p>
+          <div className="bg-white/60 backdrop-blur-md p-8 rounded-3xl border border-white/40 shadow-premium flex flex-col justify-center">
+            <p className="text-gray-600 font-bold uppercase tracking-widest text-[10px] mb-2">Meeting Minutes</p>
             <h4 className="text-xl font-bold text-gray-900">{minutes.length} Archives</h4>
-            <p className="text-sm text-gray-500 mt-1">Available for download</p>
+            <p className="text-sm text-gray-700 mt-1">Available for download</p>
           </div>
         </div>
       )}
@@ -180,17 +180,17 @@ export default function PublicHubPage() {
         <div className="space-y-16">
           {/* Quarterly Digest */}
           <section>
-            <h2 className="text-2xl font-bold mb-8 flex items-center text-gray-800">
-              <span className="bg-blue-600 w-3 h-10 mr-4 rounded-full shadow-lg shadow-blue-200"></span>
+            <h2 className="text-2xl font-bold mb-8 flex items-center text-white">
+              <span className="bg-blue-500 w-3 h-10 mr-4 rounded-full shadow-lg shadow-blue-500/50"></span>
               Quarterly Digest
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {digest.map((item: any) => (
-                <article key={item._id} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group overflow-hidden relative">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-12 -mt-12 transition-all group-hover:scale-110"></div>
-                  <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">{item.category}</span>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">{item.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-4 mb-6">{item.content}</p>
+                <article key={item._id} className="bg-white/60 backdrop-blur-lg p-8 rounded-2xl border border-white/40 shadow-premium hover:shadow-premium-hover transition-all group overflow-hidden relative">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-bl-full -mr-12 -mt-12 transition-all group-hover:scale-110"></div>
+                  <span className="inline-block px-3 py-1 bg-blue-500/20 text-blue-800 text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 border border-blue-500/30">{item.category}</span>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors">{item.title}</h3>
+                  <p className="text-gray-700 text-sm leading-relaxed line-clamp-4 mb-6">{item.content}</p>
                   <div className="flex justify-between items-center pt-6 border-t border-gray-50 text-xs text-gray-400">
                     <span className="flex items-center">
                       <svg className="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -212,11 +212,11 @@ export default function PublicHubPage() {
 
           {/* Impact Tracking */}
           <section>
-            <h2 className="text-2xl font-bold mb-8 flex items-center text-gray-800">
-              <span className="bg-green-600 w-3 h-10 mr-4 rounded-full shadow-lg shadow-green-200"></span>
+            <h2 className="text-2xl font-bold mb-8 flex items-center text-white">
+              <span className="bg-green-500 w-3 h-10 mr-4 rounded-full shadow-lg shadow-green-500/50"></span>
               Impact Tracking
             </h2>
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl overflow-hidden">
+            <div className="bg-white/60 backdrop-blur-lg rounded-2xl border border-white/40 shadow-premium overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left">
                   <thead className="bg-gray-50/50 text-gray-400 text-[10px] uppercase font-bold tracking-widest">
@@ -258,11 +258,11 @@ export default function PublicHubPage() {
 
           {/* Minutes Archive */}
           <section>
-            <h2 className="text-2xl font-bold mb-8 flex items-center text-gray-800">
-              <span className="bg-yellow-500 w-3 h-10 mr-4 rounded-full shadow-lg shadow-yellow-200"></span>
+            <h2 className="text-2xl font-bold mb-8 flex items-center text-white">
+              <span className="bg-yellow-500 w-3 h-10 mr-4 rounded-full shadow-lg shadow-yellow-500/50"></span>
               Minutes Archive
             </h2>
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-xl">
+            <div className="bg-white/60 backdrop-blur-lg p-8 rounded-2xl border border-white/40 shadow-premium">
               <div className="relative mb-8 max-w-md">
                 <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>

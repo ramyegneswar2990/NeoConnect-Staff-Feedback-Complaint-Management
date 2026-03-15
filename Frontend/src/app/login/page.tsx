@@ -24,8 +24,11 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen relative">
-      {/* Background with scenic mountain sunset */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sunset-300 via-orange-400 to-pink-500">
+      {/* Background with scenic nature view */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/background.jpg')" }}
+      >
         <div className="absolute inset-0 bg-gradient-to-t from-mountain-900/80 via-mountain-700/40 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-mountain-900/60"></div>
       </div>
@@ -122,7 +125,7 @@ export default function LoginPage() {
               <div>
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-mountain-600 to-mountain-700 text-white py-3 px-4 rounded-lg hover:from-mountain-700 hover:to-mountain-800 focus:outline-none focus:ring-2 focus:ring-mountain-500 focus:ring-offset-2 transition-all duration-200 font-semibold shadow-lg"
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-4 rounded-lg hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all duration-200 font-semibold shadow-lg"
                 >
                   Sign in now
                 </button>

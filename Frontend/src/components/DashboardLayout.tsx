@@ -21,26 +21,27 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const { user, logout } = useAuth();
   const pathname = usePathname();
 
-  const navItems = [
-    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard, roles: ['Staff', 'Secretariat', 'Case Manager', 'Admin'] },
-    { name: 'Submit Case', href: '/cases/new', icon: FilePlus, roles: ['Staff'] },
-    { name: 'My Cases', href: '/cases', icon: Inbox, roles: ['Staff'] },
-    { name: 'Assigned Cases', href: '/cases', icon: CheckCircle2, roles: ['Case Manager'] },
-    { name: 'Secretariat Inbox', href: '/cases/all', icon: Inbox, roles: ['Secretariat', 'Admin'] },
-    { name: 'Public Hub', href: '/public', icon: Globe, roles: ['Staff', 'Secretariat', 'Case Manager', 'Admin'] },
-    { name: 'Analytics', href: '/analytics', icon: BarChart3, roles: ['Secretariat', 'Admin'] },
-    { name: 'Polls', href: '/polls', icon: PieChart, roles: ['Staff', 'Secretariat', 'Admin'] },
-    { name: 'Admin', href: '/admin', icon: Users, roles: ['Admin'] },
-  ];
+    const navItems = [
+      { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard, roles: ['Staff', 'Secretariat', 'Case Manager'] },
+      { name: 'Submit Case', href: '/cases/new', icon: FilePlus, roles: ['Staff'] },
+      { name: 'My Cases', href: '/cases', icon: Inbox, roles: ['Staff'] },
+      { name: 'Assigned Cases', href: '/cases', icon: CheckCircle2, roles: ['Case Manager'] },
+      { name: 'Secretariat Inbox', href: '/cases/all', icon: Inbox, roles: ['Secretariat'] },
+      { name: 'Quarterly Digest', href: '/public', icon: Globe, roles: ['Staff', 'Secretariat', 'Case Manager'] },
+      { name: 'Analytics', href: '/analytics', icon: BarChart3, roles: ['Secretariat'] },
+      { name: 'Polls', href: '/polls', icon: PieChart, roles: ['Staff', 'Secretariat'] },
+      { name: 'Admin', href: '/admin', icon: Users, roles: ['Admin'] },
+    ];
 
   const filteredNav = navItems.filter(item => user && item.roles.includes(user.role));
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen relative text-gray-900 bg-transparent">
       {/* Sidebar */}
-      <div className="w-64 temple-card border-r border-border flex flex-col temple-glow">
-        <div className="p-6 border-b border-border">
-          <h1 className="text-xl font-bold text-forest-300">NeoConnect</h1>
+      <div className="w-64 sidebar-premium flex flex-col relative z-20">
+        {/* Brand header with gradient */}
+        <div className="sidebar-brand p-6">
+          <h1 className="text-xl font-bold">NeoConnect</h1>
         </div>
         <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
           {filteredNav.map((item) => (
@@ -48,28 +49,27 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               key={item.name}
               href={item.href}
               className={cn(
-                "flex items-center space-x-3 p-3 rounded-lg transition-colors",
-                pathname === item.href ? "bg-night-500/30 text-white border border-night-400/50" : "text-temple-200 hover:bg-temple-700/50 hover:text-white"
+                pathname === item.href ? "sidebar-item-active" : "sidebar-item-inactive"
               )}
             >
-              <item.icon size={20} />
+              <item.icon size={20} className="mr-3" />
               <span className="font-medium">{item.name}</span>
             </Link>
           ))}
         </nav>
-        <div className="p-4 border-t border-border">
-          <div className="flex items-center space-x-3 mb-4 p-3 temple-card rounded-lg temple-glow">
-            <div className="w-8 h-8 rounded-full bg-night-500/30 flex items-center justify-center text-white font-bold border border-night-400/50">
+        <div className="p-4 border-t border-primary/30">
+          <div className="flex items-center space-x-3 mb-4 p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm border border-white/30">
               {user?.name[0]}
             </div>
             <div className="flex-1 overflow-hidden">
-              <p className="text-sm font-medium truncate text-foreground">{user?.name}</p>
-              <p className="text-xs text-temple-300 capitalize">{user?.role}</p>
+              <p className="text-sm font-medium truncate text-white">{user?.name}</p>
+              <p className="text-xs text-white/70 capitalize">{user?.role}</p>
             </div>
           </div>
           <button
             onClick={logout}
-            className="flex items-center space-x-3 w-full p-3 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+            className="flex items-center space-x-3 w-full p-3 text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-all duration-200"
           >
             <LogOut size={20} />
             <span className="font-medium">Logout</span>
@@ -78,16 +78,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="temple-card border-b border-border p-4 flex justify-between items-center h-16 temple-glow">
-          <h2 className="text-lg font-semibold text-foreground">
+      <div className="flex-1 flex flex-col overflow-hidden relative z-10 w-full h-full">
+        <header className="bg-black/20 backdrop-blur-md border-b border-white/10 px-8 py-6 flex justify-between items-center shadow-premium">
+          <h2 className="text-xl font-semibold text-white">
             {navItems.find(n => n.href === pathname)?.name || 'Dashboard'}
           </h2>
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-white/80 font-medium">
             {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </div>
         </header>
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-8 bg-transparent">
           {children}
         </main>
       </div>

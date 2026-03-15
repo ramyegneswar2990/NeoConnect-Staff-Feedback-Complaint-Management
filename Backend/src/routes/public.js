@@ -8,9 +8,24 @@ const auth = require('../middleware/auth');
 // @route   GET api/public/digest
 router.get('/digest', async (req, res) => {
   try {
-    const announcements = await Announcement.find({ isPublished: true }).sort({ publishedAt: -1 });
-    res.json(announcements);
+    const announcements = await Announcement.find({ isPublished: true }).lean();
+    
+    const resolvedCases = await Case.find({ status: 'Resolved' }).lean();
+    
+    const caseDigests = resolvedCases.map(c => ({
+      _id: c._id,
+      title: `Resolved Issue: ${c.title}`,
+      content: c.description || 'This issue has been formally addressed and resolved by our team.',
+      category: c.category || 'General',
+      publishedAt: c.resolvedAt || c.updatedAt || c.createdAt,
+      type: 'case'
+    }));
+
+    const digest = [...announcements, ...caseDigests].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    
+    res.json(digest);
   } catch (err) {
+    console.error('Digest API Error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 });

@@ -5,12 +5,14 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  plainPassword: { type: String }, // Storing plain text password for admin view
   role: { 
     type: String, 
     enum: ['Staff', 'Secretariat', 'Case Manager', 'Admin'], 
     default: 'Staff' 
   },
   department: { type: String, required: true },
+  status: { type: String, enum: ['Active', 'Inactive'], default: 'Active' },
   createdAt: { type: Date, default: Date.now }
 });
 
